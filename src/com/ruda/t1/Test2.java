@@ -20,6 +20,10 @@ public class Test2 {
 		//System.out.println("주민번호 입력");
 		//String jumin = sc.next();
 		String jumin = "991222-1234567";
+
+		//1. splite
+		//String [] jumins = jumin.split("");
+		//2 subString
 		jumin = jumin.replace("-", "");
 		String num1 = jumin.substring(0, 8);
 		String[] nums1=num1.split("");
@@ -29,7 +33,57 @@ public class Test2 {
 			//Integer integer = new Integer(nums1[i]);
 			sum = (sum2)*(i+2)+sum;
 		}
-		System.out.println(sum);
+		String num2 = jumin.substring(8, 12);
+		String[] nums2=num2.split("");
+		int sum4 = 0;
+		for(int i=0;i<num2.length();i++) {
+			int sum3 = Integer.parseInt(nums2[i]);
+			//Integer integer = new Integer(nums1[i]);
+			sum4 = (sum3)*(i+2)+sum4;	
+		}
+		String num3 = jumin.substring(12, 13);
+		int num4 = Integer.parseInt(num3);
+		sum = sum+sum4; 
+		int sumb = sum%11;
+		sumb = 11-sumb;
+		if(sumb<10 && sumb==num4) {System.out.println("주민등록번호 유효");
+		}else if (sumb>9&&(sumb%10)==num4) {
+			System.out.println("주민등록번호 유효");
+		}else {
+			System.out.println("유효하지 않은 주민등록번호");
+		}
+		/***********************************************
+		//3. char at
+		int sum7=0;
+		int idx=2;
+		for(int i =0; i<jumin.length()-1;i++) {
+			if(i==6) {
+				continue;
+				}
+			char ch = jumin.charAt(i);
+			String n1 = String.valueOf(ch);
+
+			int n = Integer.parseInt(n1);
+			sum7 = sum7+n*idx;
+			idx++;
+			if(idx==1) {
+				idx=2;
+			}
+
+		}
+		sum7 =sum7%11;
+		sum7=11-sum7;
+		if(sum7>9) {
+			sum7 = sum7%10;
+		}
+		int result = Integer.parseInt(String.valueOf(jumin.charAt(jumin.length()-1)));
+
+		if(sum7==result) {System.out.println("맞는 번호");
+
+		}else {
+			System.out.println("틀린 번호");
+		}
+		 **********************************/
 	}
 
 
